@@ -13,10 +13,8 @@ var PORT = process.env.PORT || 3000;
 const db = knex({
     client: 'pg',
     connection: {
-      host : 'postgresql-shaped-99877',
-      user : 'postgres',
-      password : '',
-      database : 'smartbrain'
+      host : process.env.DATABASE_URL,
+      ssl: true,
     }
   });
 
@@ -36,8 +34,3 @@ app.listen(PORT, () => {
 });
 
 
-CREATE TABLE login (
-  id serial PRIMARY KEY,
-  hash varchar(100) NOT NULL,
-  email text UNIQUE NOT NULL, 
-);
