@@ -13,9 +13,9 @@ var PORT = process.env.PORT || 3000;
 const db = knex({
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
+      host : 'postgresql-shaped-99877',
       user : 'postgres',
-      password : 'test',
+      password : '',
       database : 'smartbrain'
     }
   });
@@ -34,3 +34,10 @@ app.post('/imageurl', (req,res) => {image.handleApiCall(req,res)} );
 app.listen(PORT, () => {
     console.log(`App is running on port ${PORT}`);
 });
+
+
+CREATE TABLE login (
+  id serial PRIMARY KEY,
+  hash varchar(100) NOT NULL,
+  email text UNIQUE NOT NULL, 
+);
